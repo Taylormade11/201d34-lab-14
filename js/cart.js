@@ -29,12 +29,8 @@ function showCart() {
   var tableChart = document.getElementsByTagName('tbody');
   // TODO: Iterate over the items in the cart
   for (var i in Cart) {
-    
-  
   // TODO: Create a TR
     var tableRow = document.createElement('tr');
-  
-    
     // TODO: Create a TD for the delete link, quantity,  and the item
 
     var tableCell = document.createElement('td');
@@ -42,7 +38,6 @@ function showCart() {
     // TODO: Add the TR to the TBODY and each of the TD's to the TR
     tableRow.appendChild(tableCell);
     tableChart.appendChild(tableRow);
-    
   }
 }
 
