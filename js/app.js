@@ -11,7 +11,7 @@ var CartItem = function(name, qty) {
   this.qty = qty;
   this.filePath = 0;
   Cart.push(this);
-}
+};
 
 
 
