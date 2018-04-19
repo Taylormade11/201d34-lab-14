@@ -6,6 +6,14 @@
 // properties, and builds an array of items as you create instances
 
 
+var CartItem = function(name, qty) {
+  this.name = name;
+  this.qty = qty;
+  this.filePath = 0;
+  Cart.push(this);
+}
+
+
 
 // Product Contructor
 var Product = function(filePath, name) {
