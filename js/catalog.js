@@ -60,14 +60,23 @@ function saveCartToLocalStorage() {
 
 // Update the cart count in the header nav with the number of items in the Cart
 
+var itemCount = document.getElementById('itemCount');
+var cartTotal = localStorage.getItem('Cart Total');
+var parsedTotal = JSON.parse(cartTotal);
+itemCount.textContent = parsedTotal;
 
 function updateCounter() {
+  
   var totalQty = 0;
-  var itemCount = document.getElementById('itemCount');
   for (var j in cartQty) {
     totalQty += parseInt(cartQty[j]);
+    console.log(totalQty);
   }
-  itemCount.textContent = totalQty;
+  var totalQtyLS = JSON.stringify(totalQty);
+  localStorage.setItem('Cart Total', totalQtyLS);
+  var cartTotal = localStorage.getItem('Cart Total');
+  var parsedTotal = JSON.parse(cartTotal);
+  itemCount.textContent = parsedTotal;
   console.log(totalQty);
 };
 
@@ -77,10 +86,10 @@ function updateCounter() {
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
 
-
+  
   // TODO: Add a new element to the cartContents div with that information
 
-  
+
 }
 
 // Set up the "submit" event listener on the form.
@@ -92,3 +101,4 @@ catalogForm.addEventListener('submit', handleSubmit);
 // Before anything else of value can happen, we need to fill in the select
 // drop down list in the form.
 populateForm();
+
