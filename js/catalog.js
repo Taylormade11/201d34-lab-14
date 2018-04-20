@@ -2,8 +2,8 @@
 
 'use strict';
 
-var Cart = [];
 var cartQty = [];
+var Cart = [];
 
 // On screen load, we call this method to put all of the busmall options
 // (the things in the Product.allProducts array) into the drop down list.
@@ -66,7 +66,7 @@ var parsedTotal = JSON.parse(cartTotal);
 itemCount.textContent = parsedTotal;
 
 function updateCounter() {
-  
+
   var totalQty = 0;
   for (var j in cartQty) {
     totalQty += parseInt(cartQty[j]);
@@ -76,24 +76,29 @@ function updateCounter() {
   localStorage.setItem('Cart Total', totalQtyLS);
   var cartTotal = localStorage.getItem('Cart Total');
   var parsedTotal = JSON.parse(cartTotal);
-  itemCount.textContent = parsedTotal;
+  itemCount.textContdent = parsedTotal;
   console.log(totalQty);
-};
+}
 
 
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
-  var selectedProduct = document.getElementById('items').value;
-  console.log(selectedProduct);
+  var persistentProduct = localStorage.getItem('Cart');
+  var parsedPersistant = JSON.parse(persistentProduct);
+  console.log(parsedPersistant);
   // get the quantity
   var selectedQuantity = document.getElementById('quantity').value;
   console.log(selectedQuantity);
   console.log(cartQty);
-  
   // TODO: Add a new element to the cartContents div with that information
-
+  var cartDiv = document.getElementById('cartContents');
+  var cartList = document.createElement('ul');
+  var listItem = document.createElement('li');
+  listItem.textContent = persistentProduct + ' : ' + selectedQuantity;
+  cartList.appendChild(listItem);
+  cartDiv.appendChild(cartList);
 }
 
 // Set up the "submit" event listener on the form.
